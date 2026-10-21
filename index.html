@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff7fa">
+  <title>Cake Shake® — Made for Sweet Moments</title>
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    rel="stylesheet"
+  >
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --pink: #e94f86;
+      --pink-dark: #c92d68;
+      --pink-light: #ffe5ef;
+      --plum: #4c1835;
+      --cream: #fff8f6;
+      --muted: #7d6873;
+      --shadow: 0 18px 55px rgba(103, 29, 64, .10);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      margin: 0;
+      font-family: "DM Sans", sans-serif;
+      color: var(--plum);
+      background: var(--cream);
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    .brand-name {
+      font-family: "Playfair Display", serif;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .section-pad {
+      padding: 92px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--pink-dark);
+      background: #ffe8f0;
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-size: clamp(2.15rem, 4vw, 3.4rem);
+      line-height: 1.1;
+      font-weight: 700;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      max-width: 570px;
+    }
+
+    .btn-sweet {
+      background: var(--pink);
+      border: 1px solid var(--pink);
+      color: #fff;
+      border-radius: 999px;
+      padding: 13px 23px;
+      font-weight: 700;
+      box-shadow: 0 9px 22px rgba(233, 79, 134, .22);
+      transition: transform .25s, background .25s, box-shadow .25s;
+    }
+
+    .btn-sweet:hover {
+      background: var(--pink-dark);
+      border-color: var(--pink-dark);
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 13px 28px rgba(233, 79, 134, .3);
+    }
+
+    .btn-outline-sweet {
+      border: 1px solid #edb5cb;
+      color: var(--plum);
+      border-radius: 999px;
+      padding: 12px 22px;
+      font-weight: 700;
+      transition: .25s;
+    }
+
+    .btn-outline-sweet:hover {
+      background: var(--pink-light);
+      color: var(--pink-dark);
+      transform: translateY(-2px);
+    }
+
+    /* Navigation */
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1030;
+      padding: 12px 0;
+      background: rgba(255, 248, 246, .88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(201, 45, 104, .08);
+    }
+
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--plum);
+    }
+
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: linear-gradient(145deg, #f58bb2, var(--pink-dark));
+      border-radius: 15px;
+      box-shadow: 0 7px 18px #e94f8633;
+      transform: rotate(-5deg);
+    }
+
+    .brand-name {
+      font-size: 1.55rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .brand-name span {
+      color: var(--pink);
+    }
+
+    .navbar .nav-link {
+      color: #654252;
+      font-weight: 700;
+      font-size: .94rem;
+      padding: 10px 13px !important;
+      transition: color .2s;
+    }
+
+    .navbar .nav-link:hover,
+    .navbar .nav-link.active {
+      color: var(--pink-dark);
+    }
+
+    .cart-btn {
+      position: relative;
+      border: 0;
+      background: #ffebf2;
+      color: var(--pink-dark);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -3px;
+      right: -3px;
+      background: var(--plum);
+      color: white;
+      width: 19px;
+      height: 19px;
+      border-radius: 50%;
+      font-size: .68rem;
+      display: grid;
+      place-items: center;
+      border: 2px solid var(--cream);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 48px 0 75px;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .hero:before {
+      content: "";
+      position: absolute;
+      width: 460px;
+      height: 460px;
+      border-radius: 50%;
+      background: #ffe1ed;
+      filter: blur(1px);
+      top: 0;
+      right: -190px;
+      z-index: -1;
+    }
+
+    .hero:after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: #fff0d9;
+      bottom: 0;
+      left: -110px;
+      z-index: -1;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 6.5vw, 5.7rem);
+      line-height: .99;
+      letter-spacing: -.045em;
+      margin: 22px 0;
+    }
+
+    .hero h1 em {
+      color: var(--pink);
+      font-style: normal;
+    }
+
+    .hero-copy {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 510px;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 28px 0 30px;
+    }
+
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    .avatar-stack {
+      display: flex;
+      padding-left: 5px;
+    }
+
+    .avatar-stack img {
+      width: 34px;
+      height: 34px;
+      object-fit: cover;
+      border: 3px solid var(--cream);
+      border-radius: 50%;
+      margin-left: -7px;
+    }
+
+    .stars {
+      color: #f3a62b;
+      letter-spacing: 2px;
+      font-size: .85rem;
+    }
+
+    .hero-art {
+      position: relative;
+      min-height: 490px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-image-wrap {
+      width: min(100%, 500px);
+      height: 465px;
+      overflow: hidden;
+      border-radius: 48% 48% 28px 28px;
+      background: #f8c4d8;
+      box-shadow: var(--shadow);
+      transform: rotate(2deg);
+    }
+
+    .hero-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .8s;
+    }
+
+    .hero-image-wrap:hover img {
+      transform: scale(1.06);
+    }
+
+    .float-card {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      background: rgba(255, 255, 255, .94);
+      padding: 13px 17px;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .float-card i {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 13px;
+      background: #ffe6ef;
+      color: var(--pink-dark);
+    }
+
+    .float-card strong {
+      display: block;
+      font-size: .9rem;
+    }
+
+    .float-card small {
+      color: var(--muted);
+    }
+
+    .float-one {
+      left: -5px;
+      top: 90px;
+    }
+
+    .float-two {
+      right: -5px;
+      bottom: 62px;
+      animation-delay: -2s;
+    }
+
+    .hero-sticker {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: #fff;
+      color: var(--pink-dark);
+      border: 1px dashed var(--pink);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font-size: .72rem;
+      font-weight: 800;
+      transform: rotate(12deg);
+    }
+
+    /* Benefits */
+    .benefits {
+      background: #fff;
+      border-top: 1px solid #fae6ee;
+      border-bottom: 1px solid #fae6ee;
+    }
+
+    .benefit {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+      padding: 25px 10px;
+    }
+
+    .benefit-icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      background: #fff0f5;
+      color: var(--pink-dark);
+      font-size: 1.2rem;
+    }
+
+    .benefit strong {
+      display: block;
+      font-size: .95rem;
+    }
+
+    .benefit small {
+      color: var(--muted);
+    }
+
+    /* Menu */
+    .menu-section {
+      background: linear-gradient(180deg, #fff8f6, #fff0f5);
+    }
+
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      justify-content: center;
+      margin: 28px 0 36px;
+    }
+
+    .filter-btn {
+      border: 1px solid #f0cad9;
+      background: white;
+      color: #765064;
+      border-radius: 999px;
+      padding: 9px 18px;
+      font-weight: 700;
+      transition: .2s;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--pink);
+      border-color: var(--pink);
+      color: #fff;
+    }
+
+    .product-card {
+      height: 100%;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid #f8e3eb;
+      border-radius: var(--radius);
+      box-shadow: 0 8px 26px rgba(103, 29, 64, .05);
+      transition: transform .3s, box-shadow .3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
+    }
+
+    .product-image {
+      height: 230px;
+      overflow: hidden;
+      position: relative;
+      background: #ffe8f0;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s;
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.08);
+    }
+
+    .product-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      border-radius: 999px;
+      padding: 6px 11px;
+      font-size: .72rem;
+      font-weight: 800;
+      color: var(--pink-dark);
+      background: rgba(255, 255, 255, .94);
+    }
+
+    .heart-btn {
+      position: absolute;
+      right: 14px;
+      top: 14px;
+      border: 0;
+      width: 37px;
+      height: 37px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .94);
+      color: #a87a8d;
+      transition: .2s;
+    }
+
+    .heart-btn.liked {
+      color: #e23d75;
+    }
+
+    .product-body {
+      padding: 20px;
+    }
+
+    .product-body h3 {
+      font-size: 1.35rem;
+      margin-bottom: 7px;
+    }
+
+    .product-description {
+      color: var(--muted);
+      font-size: .9rem;
+      min-height: 45px;
+    }
+
+    .product-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .price {
+      color: var(--pink-dark);
+      font-size: 1.25rem;
+      font-weight: 800;
+    }
+
+    .add-btn {
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 50%;
+      background: var(--pink);
+      color: #fff;
+      transition: .2s;
+    }
+
+    .add-btn:hover {
+      background: var(--pink-dark);
+      transform: rotate(90deg);
+    }
+
+    /* Feature banner */
+    .custom-banner {
+      padding: 0 0 90px;
+      background: #fff0f5;
+    }
+
+    .banner-inner {
+      position: relative;
+      overflow: hidden;
+      border-radius: 32px;
+      padding: 55px;
+      color: #fff;
+      background:
+        linear-gradient(110deg, rgba(69, 18, 46, .88), rgba(153, 30, 82, .45)),
+        url("https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1800&q=85")
+        center / cover;
+    }
+
+    .banner-inner h2 {
+      max-width: 600px;
+      font-size: clamp(2.2rem, 4.4vw, 3.8rem);
+    }
+
+    .banner-inner p {
+      max-width: 500px;
+      color: #ffedf4;
+    }
+
+    .banner-inner .btn {
+      margin-top: 10px;
+    }
+
+    /* Reviews */
+    .review-card {
+      height: 100%;
+      background: #fff;
+      padding: 28px;
+      border-radius: var(--radius);
+      border: 1px solid #f8e3eb;
+    }
+
+    .review-card p {
+      color: var(--muted);
+      margin: 18px 0;
+    }
+
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .reviewer img {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .reviewer strong {
+      display: block;
+      font-size: .92rem;
+    }
+
+    .reviewer small {
+      color: var(--muted);
+    }
+
+    /* Newsletter and footer */
+    .newsletter {
+      background: #ffe8f0;
+      padding: 58px 0;
+    }
+
+    .newsletter-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+      flex-wrap: wrap;
+    }
+
+    .newsletter h2 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      margin-bottom: 8px;
+    }
+
+    .newsletter p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 9px;
+      width: min(100%, 450px);
+    }
+
+    .newsletter-form input {
+      min-width: 0;
+      flex: 1;
+      border: 1px solid #efbfd2;
+      border-radius: 999px;
+      padding: 13px 18px;
+      outline: none;
+      background: #fff;
+    }
+
+    .newsletter-form input:focus {
+      border-color: var(--pink);
+      box-shadow: 0 0 0 3px #e94f8622;
+    }
+
+    footer {
+      background: #41152f;
+      color: #fbeaf1;
+      padding: 55px 0 20px;
+    }
+
+    footer .brand-name {
+      color: #fff;
+    }
+
+    footer .footer-copy {
+      color: #d9b8c8;
+      max-width: 340px;
+      margin-top: 18px;
+    }
+
+    footer h5 {
+      color: #fff;
+      font-size: 1rem;
+      margin-bottom: 17px;
+    }
+
+    footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    footer li {
+      margin-bottom: 10px;
+    }
+
+    footer a {
+      color: #d9b8c8;
+      transition: color .2s;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+
+    .social-link {
+      display: inline-grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      margin-right: 7px;
+      border-radius: 50%;
+      background: #612344;
+      color: #fff;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #69324f;
+      margin-top: 35px;
+      padding-top: 18px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      color: #d9b8c8;
+      font-size: .84rem;
+    }
+
+    /* Motion and responsive */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    .to-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 46px;
+      height: 46px;
+      border: 0;
+      border-radius: 50%;
+      color: #fff;
+      background: var(--pink-dark);
+      box-shadow: var(--shadow);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: .25s;
+    }
+
+    .to-top.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .toast-message {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translate(-50%, 20px);
+      background: #41152f;
+      color: #fff;
+      border-radius: 999px;
+      padding: 12px 20px;
+      box-shadow: var(--shadow);
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      transition: .25s;
+      white-space: nowrap;
+    }
+
+    .toast-message.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    .empty-state {
+      color: var(--muted);
+      padding: 25px;
+      text-align: center;
+    }
+
+    @media (max-width: 991px) {
+      .hero {
+        padding-top: 35px;
+      }
+
+      .hero-art {
+        min-height: 420px;
+        margin-top: 25px;
+      }
+
+      .hero-image-wrap {
+        height: 410px;
+        max-width: 440px;
+      }
+
+      .navbar-collapse {
+        padding-top: 14px;
+      }
+
+      .nav-cta {
+        margin-top: 10px;
+      }
+    }
+
+    @media (max-width: 575px) {
+      .section-pad {
+        padding: 65px 0;
+      }
+
+      .hero {
+        padding-bottom: 50px;
+      }
+
+      .hero-art {
+        min-height: 340px;
+      }
+
+      .hero-image-wrap {
+        height: 330px;
+        border-radius: 42% 42% 22px 22px;
+      }
+
+      .float-card {
+        padding: 9px 11px;
+      }
+
+      .float-card i {
+        width: 32px;
+        height: 32px;
+      }
+
+      .float-one {
+        left: 0;
+        top: 35px;
+      }
+
+      .float-two {
+        right: 0;
+        bottom: 25px;
+      }
+
+      .hero-sticker {
+        width: 72px;
+        height: 72px;
+        right: 0;
+        font-size: .62rem;
+      }
+
+      .banner-inner {
+        padding: 32px 24px;
+        border-radius: 24px;
+      }
+
+      .product-image {
+        height: 215px;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
+
+      .newsletter-form .btn {
+        width: 100%;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Responsive navigation -->
+  <nav class="navbar navbar-expand-lg site-nav">
+    <div class="container">
+      <a class="navbar-brand" href="#home" aria-label="Cake Shake home">
+        <span class="brand-mark">
+          <i class="fa-solid fa-cake-candles"></i>
+        </span>
+        <span class="brand-name">Cake <span>Shake</span><sup>®</sup></span>
+      </a>
+
+      <button
+        class="navbar-toggler border-0 shadow-none"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#mainNav"
+        aria-controls="mainNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fa-solid fa-bars-staggered fs-4" style="color:var(--pink-dark)"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#menu">Our Menu</a></li>
+          <li class="nav-item"><a class="nav-link" href="#story">Our Story</a></li>
+          <li class="nav-item"><a class="nav-link" href="#reviews">Reviews</a></li>
+          <li class="nav-item ms-lg-2 nav-cta">
+            <a class="btn btn-sweet" href="#menu">
+              Order a treat <i class="fa-solid fa-arrow-right ms-1"></i>
+            </a>
+          </li>
+          <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+            <button
+              class="cart-btn"
+              type="button"
+              aria-label="Cart"
+              data-bs-toggle="modal"
+              data-bs-target="#cartModal"
+            >
+              <i class="fa-solid fa-bag-shopping"></i>
+              <span class="cart-count" id="cartCount">0</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-6">
+            <div class="reveal">
+              <span class="eyebrow">
+                <i class="fa-solid fa-heart"></i> Baked fresh, shared with love
+              </span>
+              <h1>A little slice<br>of <em>happiness.</em></h1>
+              <p class="hero-copy">
+                From dreamy cakes to bite-sized delights, every treat is handmade
+                to make your everyday moments feel extra special.
+              </p>
+
+              <div class="hero-actions">
+                <a href="#menu" class="btn btn-sweet">
+                  Explore our menu <i class="fa-solid fa-arrow-right ms-2"></i>
+                </a>
+                <a href="#story" class="btn btn-outline-sweet">
+                  <i class="fa-regular fa-circle-play me-2"></i>Our story
+                </a>
+              </div>
+
+              <div class="hero-trust">
+                <div class="avatar-stack">
+                  <img
+                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&q=80"
+                    alt=""
+                  >
+                  <img
+                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=80&q=80"
+                    alt=""
+                  >
+                  <img
+                    src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=80&q=80"
+                    alt=""
+                  >
+                </div>
+                <div>
+                  <div class="stars">★★★★★</div>
+                  <strong> Loved by sweet-tooths everywhere</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="hero-art reveal">
+              <div class="hero-image-wrap">
+                <img
+                  src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1100&q=90"
+                  alt="Beautiful chocolate celebration cake"
+                >
+              </div>
+
+              <div class="float-card float-one">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <div>
+                  <strong>Made with love</strong>
+                  <small>Fresh every day</small>
+                </div>
+              </div>
+
+              <div class="float-card float-two">
+                <i class="fa-solid fa-star"></i>
+                <div>
+                  <strong>Customer favourite</strong>
+                  <small>Sweetness in every bite</small>
+                </div>
+              </div>
+
+              <div class="hero-sticker">100%<br>HAPPINESS<br>BAKED IN</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="benefits">
+      <div class="container">
+        <div class="row g-0">
+          <div class="col-6 col-lg-3">
+            <div class="benefit">
+              <span class="benefit-icon"><i class="fa-solid fa-leaf"></i></span>
+              <div>
+                <strong>Quality ingredients</strong>
+                <small>Only the good stuff</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-lg-3">
+            <div class="benefit">
+              <span class="benefit-icon"><i class="fa-solid fa-cake-candles"></i></span>
+              <div>
+                <strong>Freshly baked</strong>
+                <small>Every single morning</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-lg-3">
+            <div class="benefit">
+              <span class="benefit-icon"><i class="fa-solid fa-box-heart"></i></span>
+              <div>
+                <strong>Made to celebrate</strong>
+                <small>Big days, little joys</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-lg-3">
+            <div class="benefit">
+              <span class="benefit-icon"><i class="fa-solid fa-truck-fast"></i></span>
+              <div>
+                <strong>Sweet delivery</strong>
+                <small>Right to your door</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu -->
+    <section class="section-pad menu-section" id="menu">
+      <div class="container">
+        <div class="text-center reveal">
+          <span class="eyebrow">Our little bakery</span>
+          <h2 class="section-title mt-3">
+            Something sweet for <span style="color:var(--pink)">everyone.</span>
+          </h2>
+          <p class="section-copy mx-auto mt-3">
+            Find your new favourite. Every treat is made with care, a pinch of
+            magic, and lots of love.
+          </p>
+        </div>
+
+        <div class="filter-row reveal" role="group" aria-label="Filter menu">
+          <button class="filter-btn active" data-filter="all">All treats</button>
+          <button class="filter-btn" data-filter="cake">Cakes</button>
+          <button class="filter-btn" data-filter="cupcake">Cupcakes</button>
+          <button class="filter-btn" data-filter="dessert">Desserts</button>
+        </div>
+
+        <div class="row g-4" id="productGrid">
+          <div
+            class="col-sm-6 col-lg-4 product-col reveal"
+            data-category="cake"
+            data-name="chocolate dream cake"
+          >
+            <article class="product-card">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=800&q=85"
+                  alt="Chocolate Dream Cake"
+                  loading="lazy"
+                >
+                <span class="product-tag">BESTSELLER</span>
+                <button class="heart-btn" aria-label="Add Chocolate Dream Cake to favourites">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+              </div>
+              <div class="product-body">
+                <h3>Chocolate Dream</h3>
+                <p class="product-description">Rich chocolate layers with silky ganache.</p>
+                <div class="d-flex align-items-center gap-2">
+                  <span class="stars">★★★★★</span>
+                  <small class="text-secondary">(4.9)</small>
+                </div>
+                <div class="product-bottom">
+                  <span class="price">Rs. 2,499</span>
+                  <button
+                    class="add-btn"
+                    data-name="Chocolate Dream"
+                    data-price="2499"
+                    aria-label="Add Chocolate Dream to cart"
+                  >
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div
+            class="col-sm-6 col-lg-4 product-col reveal"
+            data-category="cupcake"
+            data-name="strawberry cloud cupcakes"
+          >
+            <article class="product-card">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&w=800&q=85"
+                  alt="Strawberry Cloud Cupcakes"
+                  loading="lazy"
+                >
+                <span class="product-tag">FAN FAVOURITE</span>
+                <button class="heart-btn" aria-label="Add Strawberry Cloud Cupcakes to favourites">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+              </div>
+              <div class="product-body">
+                <h3>Strawberry Clouds</h3>
+                <p class="product-description">Fluffy vanilla cupcakes with berry frosting.</p>
+                <div class="d-flex align-items-center gap-2">
+                  <span class="stars">★★★★★</span>
+                  <small class="text-secondary">(4.8)</small>
+                </div>
+                <div class="product-bottom">
+                  <span class="price">Rs. 899</span>
+                  <button
+                    class="add-btn"
+                    data-name="Strawberry Clouds"
+                    data-price="899"
+                    aria-label="Add Strawberry Clouds to cart"
+                  >
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div
+            class="col-sm-6 col-lg-4 product-col reveal"
+            data-category="dessert"
+            data-name="berry cheesecake"
+          >
+            <article class="product-card">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=800&q=85"
+                  alt="Berry Cheesecake"
+                  loading="lazy"
+                >
+                <span class="product-tag">NEW</span>
+                <button class="heart-btn" aria-label="Add Berry Cheesecake to favourites">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+              </div>
+              <div class="product-body">
+                <h3>Berry Cheesecake</h3>
+                <p class="product-description">Creamy cheesecake topped with juicy berries.</p>
+                <div class="d-flex align-items-center gap-2">
+                  <span class="stars">★★★★★</span>
+                  <small class="text-secondary">(4.9)</small>
+                </div>
+                <div class="product-bottom">
+                  <span class="price">Rs. 1,499</span>
+                  <button
+                    class="add-btn"
+                    data-name="Berry Cheesecake"
+                    data-price="1499"
+                    aria-label="Add Berry Cheesecake to cart"
+                  >
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div
+            class="col-sm-6 col-lg-4 product-col reveal"
+            data-category="cake"
+            data-name="pink velvet cake"
+          >
+            <article class="product-card">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=800&q=85"
+                  alt="Pink Velvet Cake"
+                  loading="lazy"
+                >
+                <span class="product-tag">BAKERY PICK</span>
+                <button class="heart-btn" aria-label="Add Pink Velvet Cake to favourites">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+              </div>
+              <div class="product-body">
+                <h3>Pink Velvet</h3>
+                <p class="product-description">
+                  Tender velvet sponge and dreamy cream cheese icing.
+                </p>
+                <div class="d-flex align-items-center gap-2">
+                  <span class="stars">★★★★★</span>
+                  <small class="text-secondary">(4.7)</small>
+                </div>
+                <div class="product-bottom">
+                  <span class="price">Rs. 2,199</span>
+                  <button
+                    class="add-btn"
+                    data-name="Pink Velvet"
+                    data-price="2199"
+                    aria-label="Add Pink Velvet to cart"
+                  >
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div
+            class="col-sm-6 col-lg-4 product-col reveal"
+            data-category="cupcake"
+            data-name="choco swirl cupcakes"
+          >
+            <article class="product-card">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1603532648955-039310d9ed75?auto=format&fit=crop&w=800&q=85"
+                  alt="Choco Swirl Cupcakes"
+                  loading="lazy"
+                >
+                <span class="product-tag">CHOCOLATE LOVERS</span>
+                <button class="heart-btn" aria-label="Add Choco Swirl Cupcakes to favourites">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+              </div>
+              <div class="product-body">
+                <h3>Choco Swirls</h3>
+                <p class="product-description">
+                  Chocolate cupcakes crowned with whipped cocoa frosting.
+                </p>
+                <div class="d-flex align-items-center gap-2">
+                  <span class="stars">★★★★★</span>
+                  <small class="text-secondary">(4.8)</small>
+                </div>
+                <div class="product-bottom">
+                  <span class="price">Rs. 799</span>
+                  <button
+                    class="add-btn"
+                    data-name="Choco Swirls"
+                    data-price="799"
+                    aria-label="Add Choco Swirls to cart"
+                  >
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div
+            class="col-sm-6 col-lg-4 product-col reveal"
+            data-category="dessert"
+            data-name="caramel dessert jar"
+          >
+            <article class="product-card">
+              <div class="product-image">
+                <img
+                  src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=800&q=85"
+                  alt="Caramel dessert treat"
+                  loading="lazy"
+                >
+                <span class="product-tag">A LITTLE INDULGENCE</span>
+                <button class="heart-btn" aria-label="Add Caramel Dessert Jar to favourites">
+                  <i class="fa-regular fa-heart"></i>
+                </button>
+              </div>
+              <div class="product-body">
+                <h3>Caramel Dream Jar</h3>
+                <p class="product-description">
+                  Layers of soft cake, caramel, and creamy mousse.
+                </p>
+                <div class="d-flex align-items-center gap-2">
+                  <span class="stars">★★★★★</span>
+                  <small class="text-secondary">(4.8)</small>
+                </div>
+                <div class="product-bottom">
+                  <span class="price">Rs. 649</span>
+                  <button
+                    class="add-btn"
+                    data-name="Caramel Dream Jar"
+                    data-price="649"
+                    aria-label="Add Caramel Dream Jar to cart"
+                  >
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <p id="noResults" class="empty-state d-none">
+          No treats match your search. Try another flavour!
+        </p>
+
+        <div class="text-center mt-5 reveal">
+          <button class="btn btn-outline-sweet" id="showAllBtn">
+            Browse all treats <i class="fa-solid fa-arrow-right ms-2"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Custom order banner -->
+    <section class="custom-banner" id="story">
+      <div class="container">
+        <div class="banner-inner reveal">
+          <span class="eyebrow" style="background:#ffffff20;color:#fff">
+            Your day, your cake
+          </span>
+          <h2 class="mt-3">Big celebrations deserve a little extra sweetness.</h2>
+          <p class="mt-3">
+            Planning a birthday, wedding, or just-because surprise? Let's make a
+            cake that's as special as your moment.
+          </p>
+          <a
+            class="btn btn-light rounded-pill fw-bold px-4 py-3 mt-2"
+            href="mailto:support@cakeshake.com?subject=Custom%20Cake%20Order"
+          >
+            Plan your custom cake <i class="fa-solid fa-arrow-right ms-2"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section-pad" id="reviews">
+      <div class="container">
+        <div class="text-center reveal">
+          <span class="eyebrow">Sweet words</span>
+          <h2 class="section-title mt-3">
+            A little love from <span style="color:var(--pink)">our customers.</span>
+          </h2>
+          <p class="section-copy mx-auto mt-3">
+            The best part of baking is being part of your happiest moments.
+          </p>
+        </div>
+
+        <div class="row g-4 mt-3">
+          <div class="col-md-4 reveal">
+            <article class="review-card">
+              <div class="stars">★★★★★</div>
+              <p>
+                “The chocolate cake was absolutely dreamy. Beautifully decorated,
+                super fresh, and everyone asked where we ordered it!”
+              </p>
+              <div class="reviewer">
+                <img
+                  src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&q=80"
+                  alt=""
+                >
+                <div>
+                  <strong>Ayesha K.</strong>
+                  <small>Birthday order</small>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-md-4 reveal">
+            <article class="review-card">
+              <div class="stars">★★★★★</div>
+              <p>
+                “Those cupcakes are little clouds of happiness. Ordering was easy
+                and the treats arrived looking gorgeous.”
+              </p>
+              <div class="reviewer">
+                <img
+                  src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80"
+                  alt=""
+                >
+                <div>
+                  <strong>Hamza R.</strong>
+                  <small>Repeat customer</small>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="col-md-4 reveal">
+            <article class="review-card">
+              <div class="stars">★★★★★</div>
+              <p>
+                “Ordered a custom cake for our anniversary and it turned out even
+                prettier than the reference. So delicious!”
+              </p>
+              <div class="reviewer">
+                <img
+                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80"
+                  alt=""
+                >
+                <div>
+                  <strong>Sana M.</strong>
+                  <small>Custom cake order</small>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+      <div class="container">
+        <div class="newsletter-box reveal">
+          <div>
+            <span class="eyebrow">A sprinkle of good news</span>
+            <h2 class="mt-3">Sweet deals, straight to your inbox.</h2>
+            <p>Get first dibs on new treats and little surprises.</p>
+          </div>
+
+          <form class="newsletter-form" id="newsletterForm">
+            <label class="visually-hidden" for="newsletterEmail">Email address</label>
+            <input
+              id="newsletterEmail"
+              type="email"
+              placeholder="Your email address"
+              required
+            >
+            <button class="btn btn-sweet" type="submit">
+              Count me in <i class="fa-solid fa-heart ms-1"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row g-5">
+        <div class="col-lg-4">
+          <a class="navbar-brand" href="#home">
+            <span class="brand-mark"><i class="fa-solid fa-cake-candles"></i></span>
+            <span class="brand-name">Cake <span>Shake</span><sup>®</sup></span>
+          </a>
+          <p class="footer-copy">
+            Little batches, big smiles. We make cakes and sweet treats to bring
+            people together, one delicious bite at a time.
+          </p>
+          <div class="mt-4">
+            <a class="social-link" href="#" aria-label="Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a class="social-link" href="#" aria-label="Facebook">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a class="social-link" href="#" aria-label="TikTok">
+              <i class="fa-brands fa-tiktok"></i>
+            </a>
+            <a class="social-link" href="#" aria-label="Pinterest">
+              <i class="fa-brands fa-pinterest-p"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h5>Explore</h5>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#menu">Our menu</a></li>
+            <li><a href="#story">Custom cakes</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h5>Need a hand?</h5>
+          <ul>
+            <li><a href="mailto:support@cakeshake.com">Contact us</a></li>
+            <li><a href="#menu">Order treats</a></li>
+            <li>
+              <a href="mailto:support@cakeshake.com?subject=Delivery%20question">
+                Delivery info
+              </a>
+            </li>
+            <li>
+              <a href="mailto:support@cakeshake.com?subject=FAQs">FAQs</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4">
+          <h5>Come say hello</h5>
+          <ul>
+            <li><i class="fa-solid fa-location-dot me-2"></i>Your neighbourhood bakery</li>
+            <li>
+              <i class="fa-regular fa-envelope me-2"></i>
+              <a href="mailto:support@cakeshake.com">support@cakeshake.com</a>
+            </li>
+            <li>
+              <i class="fa-solid fa-phone me-2"></i>
+              <a href="tel:+923001234567">+92 300 1234567</a>
+            </li>
+            <li>
+              <i class="fa-regular fa-clock me-2"></i>
+              Daily, 10:00 AM – 10:00 PM
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Cake Shake®. All sweet rights reserved.</span>
+        <span>
+          Made with <i class="fa-solid fa-heart" style="color:#ff79a9"></i>
+          and a little extra sugar.
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cart modal -->
+  <div
+    class="modal fade"
+    id="cartModal"
+    tabindex="-1"
+    aria-labelledby="cartModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0" style="border-radius:24px;overflow:hidden">
+        <div class="modal-header" style="background:#fff0f5;border:0">
+          <h5 class="modal-title" id="cartModalLabel">
+            <i class="fa-solid fa-bag-shopping me-2"></i>Your sweet cart
+          </h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+
+        <div class="modal-body" id="cartItems">
+          <p class="text-secondary mb-0">Your cart is waiting for something sweet.</p>
+        </div>
+
+        <div class="modal-footer d-flex justify-content-between">
+          <strong id="cartTotal">Total: Rs. 0</strong>
+          <button type="button" class="btn btn-sweet" id="checkoutBtn">
+            Continue to order <i class="fa-solid fa-arrow-right ms-1"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="to-top" id="toTop" aria-label="Back to top">
+    <i class="fa-solid fa-arrow-up"></i>
+  </button>
+  <div class="toast-message" id="toastMessage" role="status" aria-live="polite"></div>
+
+  <!-- Bootstrap + jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    $(function () {
+      let cart = [];
+
+      $("#year").text(new Date().getFullYear());
+
+      function showToast(message) {
+        $("#toastMessage").text(message).addClass("show");
+        clearTimeout(window.cakeToastTimer);
+        window.cakeToastTimer = setTimeout(
+          () => $("#toastMessage").removeClass("show"),
+          2500
+        );
+      }
+
+      // Scroll reveal animation, with a graceful fallback.
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+
+        $(".reveal").each(function () {
+          observer.observe(this);
+        });
+      } else {
+        $(".reveal").addClass("visible");
+      }
+
+      // Close the mobile navigation after choosing a section.
+      $(".navbar-nav .nav-link, .navbar-nav .btn").on("click", function () {
+        const nav = document.getElementById("mainNav");
+
+        if (nav && nav.classList.contains("show")) {
+          bootstrap.Collapse.getOrCreateInstance(nav).hide();
+        }
+      });
+
+      // Active nav link.
+      $(".nav-link").on("click", function () {
+        $(".nav-link").removeClass("active");
+        $(this).addClass("active");
+      });
+
+      // Menu filters.
+      $(".filter-btn").on("click", function () {
+        $(".filter-btn").removeClass("active");
+        $(this).addClass("active");
+
+        const filter = $(this).data("filter");
+        let visibleCount = 0;
+
+        $(".product-col").each(function () {
+          const match = filter === "all" || $(this).data("category") === filter;
+          $(this).toggleClass("d-none", !match);
+
+          if (match) {
+            visibleCount++;
+          }
+        });
+
+        $("#noResults").toggleClass("d-none", visibleCount !== 0);
+      });
+
+      // Search treats by product name or category.
+      const search = $(
+        '<div class="container mb-3">' +
+          '<label for="menuSearch" class="visually-hidden">Search menu</label>' +
+          '<div class="input-group mx-auto" style="max-width:480px">' +
+            '<span class="input-group-text bg-white border-end-0" ' +
+              'style="border-radius:999px 0 0 999px;border-color:#f0cad9">' +
+              '<i class="fa-solid fa-magnifying-glass" style="color:var(--pink)"></i>' +
+            '</span>' +
+            '<input id="menuSearch" class="form-control border-start-0" ' +
+              'style="border-radius:0 999px 999px 0;border-color:#f0cad9" ' +
+              'placeholder="Find your favourite treat...">' +
+          '</div>' +
+        '</div>'
+      );
+
+      $(".filter-row").after(search);
+
+      $("#menuSearch").on("input", function () {
+        const query = $(this).val().trim().toLowerCase();
+        let count = 0;
+
+        $(".product-col").each(function () {
+          const matches = (
+            $(this).data("name") + " " + $(this).data("category")
+          ).toLowerCase().includes(query);
+
+          $(this).toggleClass("d-none", !matches);
+
+          if (matches) {
+            count++;
+          }
+        });
+
+        $(".filter-btn").removeClass("active");
+        $('.filter-btn[data-filter="all"]').addClass("active");
+        $("#noResults").toggleClass("d-none", count > 0);
+      });
+
+      // Favourite buttons.
+      $(".heart-btn").on("click", function () {
+        $(this).toggleClass("liked");
+
+        const liked = $(this).hasClass("liked");
+
+        $(this)
+          .find("i")
+          .toggleClass("fa-regular", !liked)
+          .toggleClass("fa-solid", liked);
+
+        showToast(
+          liked
+            ? "Added to your favourites 💗"
+            : "Removed from favourites"
+        );
+      });
+
+      // Cart functionality (demo only; no payment/backend connected).
+      function money(amount) {
+        return "Rs. " + amount.toLocaleString("en-PK");
+      }
+
+      function updateCart() {
+        const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+        const total = cart.reduce(
+          (sum, item) => sum + item.price * item.qty,
+          0
+        );
+
+        $("#cartCount").text(totalItems);
+        $("#cartTotal").text("Total: " + money(total));
+
+        if (!cart.length) {
+          $("#cartItems").html(
+            '<p class="text-secondary mb-0">Your cart is waiting for something sweet.</p>'
+          );
+          return;
+        }
+
+        const $list = $('<div class="list-group list-group-flush"></div>');
+
+        cart.forEach((item, index) => {
+          const $row = $(
+            '<div class="list-group-item px-0 py-3 d-flex ' +
+            'align-items-center justify-content-between gap-3"></div>'
+          );
+
+          const $info = $('<div class="flex-grow-1"></div>');
+
+          $("<strong></strong>").text(item.name).appendTo($info);
+          $('<div class="small text-secondary"></div>')
+            .text(money(item.price) + " each")
+            .appendTo($info);
+
+          const $qty = $('<div class="d-flex align-items-center gap-2"></div>');
+
+          $(
+            '<button class="btn btn-sm btn-outline-secondary rounded-circle" ' +
+            'aria-label="Decrease quantity">−</button>'
+          )
+            .on("click", () => {
+              item.qty--;
+
+              if (item.qty <= 0) {
+                cart.splice(index, 1);
+              }
+
+              updateCart();
+            })
+            .appendTo($qty);
+
+          $('<span class="fw-bold"></span>').text(item.qty).appendTo($qty);
+
+          $(
+            '<button class="btn btn-sm btn-outline-secondary rounded-circle" ' +
+            'aria-label="Increase quantity">+</button>'
+          )
+            .on("click", () => {
+              item.qty++;
+              updateCart();
+            })
+            .appendTo($qty);
+
+          $row.append($info, $qty).appendTo($list);
+        });
+
+        $("#cartItems").empty().append($list);
+      }
+
+      $(".add-btn").on("click", function () {
+        const name = $(this).data("name");
+        const price = Number($(this).data("price"));
+        const existing = cart.find((item) => item.name === name);
+
+        if (existing) {
+          existing.qty++;
+        } else {
+          cart.push({ name, price, qty: 1 });
+        }
+
+        updateCart();
+        showToast(name + " added to your cart 🧁");
+      });
+
+      $("#checkoutBtn").on("click", function () {
+        if (!cart.length) {
+          showToast("Add a treat to your cart first!");
+          return;
+        }
+
+        const lines = cart
+          .map((item) => `${item.name} × ${item.qty} — ${money(item.price * item.qty)}`)
+          .join("\\n");
+
+        const total = cart.reduce(
+          (sum, item) => sum + item.price * item.qty,
+          0
+        );
+
+        const subject = encodeURIComponent("Cake Shake order enquiry");
+        const body = encodeURIComponent(
+          `Hello Cake Shake! I would like to place an order:\\n\\n${lines}\\n\\nTotal: ${money(total)}\\n\\nPlease confirm availability and delivery details.`
+        );
+
+        window.location.href =
+          `mailto:support@cakeshake.com?subject=${subject}&body=${body}`;
+      });
+
+      $("#newsletterForm").on("submit", function (event) {
+        event.preventDefault();
+
+        const email = $("#newsletterEmail").val().trim();
+
+        if (!email) {
+          return;
+        }
+
+        showToast("Thanks for joining our sweet list! 💌");
+        this.reset(); // Demo only: connect to a mailing-list service to save subscribers.
+      });
+
+      $("#showAllBtn").on("click", function () {
+        $(".filter-btn").removeClass("active");
+        $('.filter-btn[data-filter="all"]').addClass("active");
+        $("#menuSearch").val("");
+        $(".product-col").removeClass("d-none");
+        $("#noResults").addClass("d-none");
+
+        $("html, body").animate({
+          scrollTop: $("#menu").offset().top - 70
+        }, 450);
+      });
+
+      $("#toTop").on("click", () => $("html, body").animate({ scrollTop: 0 }, 500));
+
+      $(window).on("scroll", function () {
+        $("#toTop").toggleClass("show", $(this).scrollTop() > 500);
+      });
+    });
+  </script>
+</body>
+</html>
